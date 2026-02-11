@@ -1,5 +1,6 @@
 package com.MPesaStkPush.MPesaStkPush.controller;
 
+import com.MPesaStkPush.MPesaStkPush.dto.MpesaRequestDto;
 import com.MPesaStkPush.MPesaStkPush.service.MPesaService;
 import kong.unirest.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/mpesa")
+@RequestMapping("/api/v1/payments")
 public class MpesaController {
 
     private final MPesaService mpesaService;
@@ -18,10 +19,16 @@ public class MpesaController {
         this.mpesaService = mpesaService;
     }
 
-    @PostMapping("/stkpush")
-    public ResponseEntity<String> stkPush(@RequestParam String phoneNumber, @RequestParam Float amount) throws JSONException {
+    @PostMapping("/initiate")
+    // public ResponseEntity<String> stkPush(@RequestParam String phoneNumber, @RequestParam Float amount) throws JSONException {
 
-        String response = mpesaService.initiateStkPush(phoneNumber, amount);
+    //     String response = mpesaService.initiateStkPush(phoneNumber, amount);
+    //     return ResponseEntity.ok(response);
+    // }
+
+     public ResponseEntity<String> stkPush(@RequestBody MpesaRequestDto requestDto) throws JSONException {
+
+        String response = mpesaService.initiateStkPush(requestDto);
         return ResponseEntity.ok(response);
     }
 

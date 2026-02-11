@@ -4,12 +4,16 @@ import lombok.Data;
 
 @Data
 public class MpesaRequestDto {
-    private String phoneNumber;
+
+    private String accountUuid;
+    private String merchantReference;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String phone;
     private Double amount;
-    private String accountReference;
-    private String transactionDesc;
-    private String shortCode;
-    private String passkey;
+    private String currency;
+    private String description;
     private String callbackUrl;
 }
 

@@ -16,15 +16,33 @@ public class MpesaTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    // ===== Business Data =====
+    private String accountUuid;
+    private String merchantReference;
+    private String email;
+    private String firstName;
+    private String lastName;
     private String phoneNumber;
+    private String currency;
+    private String description;
+    private String callbackUrl;
+
+    // ===== Payment Data =====
     private Double amount;
     private String accountReference;
     private String transactionDesc;
+
+    // ===== Daraja IDs =====
     private String merchantRequestId;
     private String checkoutRequestId;
-    private LocalDateTime timestamp;
+    private String mpesaReceiptNumber;
+
+    // ===== Status =====
     private String resultCode;
     private String resultDesc;
 
+    private LocalDateTime timestamp;
 }
+
 
